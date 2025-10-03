@@ -1,0 +1,3 @@
+[submodule "subprojects/libezp2023plus"]
+	path = subprojects/libezp2023plus
+	url = https://github.com/alexandro-45/libezp2023plus

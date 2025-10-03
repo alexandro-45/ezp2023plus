@@ -231,6 +231,7 @@ next_btn_click_cb(G_GNUC_UNUSED GtkButton *btn, gpointer user_data) {
     check_unsaved(dce, discard_and_go_next, save_and_go_next);
 }
 
+/* // Unused code
 static void
 chip_id_text_changed(GtkEditable *self, G_GNUC_UNUSED gpointer user_data) {
     const char *chip_id_str = gtk_entry_get_text(GTK_ENTRY(self));
@@ -241,6 +242,7 @@ chip_id_text_changed(GtkEditable *self, G_GNUC_UNUSED gpointer user_data) {
         gtk_widget_remove_css_class(GTK_WIDGET(self), "error");
     }
 }
+*/
 
 static void
 class_selection_changed_cb(GtkDropDown *self, G_GNUC_UNUSED gpointer *new_value, gpointer user_data) {

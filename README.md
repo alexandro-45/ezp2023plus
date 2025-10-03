@@ -12,6 +12,17 @@ Software for EZP2023+(and maybe other EZP*) programmer
 
 ## Dependencies
 
+### Build
+   (The following were required on newly installed Debian13)
+   apt install libxml2-utils
+   apt install libadwaita-1-dev
+   apt install libgusb-dev
+   apt install libglib2.0-dev
+   apt install gettext
+   apt install build-essential
+   apt install cmake
+   apt install meson
+
 ### Directly used in code
 
     gio
@@ -41,6 +52,28 @@ Software for EZP2023+(and maybe other EZP*) programmer
     $ meson setup buildDir .
     $ meson compile -C buildDir
 
+    or
+
+    $ make build
+
+    or
+
+    $ make appImage
+
+    or
+
+    $ make PREFIX=~/.local build
+
 ### Install
 
     $ sudo meson install -C buildDir
+
+    or, if you can't sudo
+
+    $ meson setup --prefix ~/.local buildDir .
+    $ meson compile -C buildDir
+    $ meson install -C buildDir
+
+    or, using make (and optionally an install prefix)
+
+    $ make [ PREFIX=~/.local ] install

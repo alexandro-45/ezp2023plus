@@ -140,8 +140,8 @@ chips_list_changed_cb(G_GNUC_UNUSED ChipsDataRepository *repo, chips_list *list,
     g_list_store_remove_all(self->store);
     for (size_t i = 0; i < list->length; ++i) {
         ChipsEditorListRow *row = chips_editor_list_row_new(&list->data[i]);
-        char id[7];
-        snprintf(id, 7, "%zu", i);
+        char id[11];
+        snprintf(id, sizeof(id), "%zu", i);
         chips_editor_list_row_set_id(row, id);
         g_list_store_append(self->store, row);
         g_object_unref(row);

@@ -389,9 +389,9 @@ chip_read_task_func(GTask *task, gpointer source_object, G_GNUC_UNUSED gpointer 
                     G_GNUC_UNUSED GCancellable *cancellable) {
     WindowMain *wm = EZP_WINDOW_MAIN(source_object);
 
-    char sprintf_buf[48];
-    //warning about snprintf is ok. just ignore it
-    snprintf(sprintf_buf, 48, "%s,%s,%s", wm->selected_chip_type, wm->selected_chip_manuf, wm->selected_chip_name);
+    char sprintf_buf[50];
+
+    snprintf(sprintf_buf, sizeof(sprintf_buf), "%.15s,%.15s,%.15s", wm->selected_chip_type, wm->selected_chip_manuf, wm->selected_chip_name);
     ezp_chip_data *chip_data = chips_data_repository_find_chip(wm->repo, sprintf_buf);
     if (!chip_data) {
         g_task_return_new_error(task, domain_gquark, (45 << 16) | 45, "CHIP_NOT_FOUND");
@@ -501,9 +501,9 @@ chip_write_task_func(GTask *task, gpointer source_object, G_GNUC_UNUSED gpointer
                      G_GNUC_UNUSED GCancellable *cancellable) {
     WindowMain *wm = EZP_WINDOW_MAIN(source_object);
 
-    char sprintf_buf[48];
+    char sprintf_buf[50];
     //warning about snprintf is ok. just ignore it
-    snprintf(sprintf_buf, 48, "%s,%s,%s", wm->selected_chip_type, wm->selected_chip_manuf, wm->selected_chip_name);
+    snprintf(sprintf_buf, sizeof(sprintf_buf), "%.15s,%.15s,%.15s", wm->selected_chip_type, wm->selected_chip_manuf, wm->selected_chip_name);
     ezp_chip_data *chip_data = chips_data_repository_find_chip(wm->repo, sprintf_buf);
     if (!chip_data) {
         g_task_return_new_error(task, domain_gquark, (45 << 16) | 45, "CHIP_NOT_FOUND");
@@ -688,9 +688,9 @@ chip_selected(WindowMain *wm, GtkStringObject *selected_type, GtkStringObject *s
 
     printf("Flash selected: %s,%s,%s\n", wm->selected_chip_type, wm->selected_chip_manuf, wm->selected_chip_name);
 
-    char sprintf_buf[48];
+    char sprintf_buf[50];
     //warning about snprintf is ok. just ignore it
-    snprintf(sprintf_buf, 48, "%s,%s,%s", wm->selected_chip_type, wm->selected_chip_manuf, wm->selected_chip_name);
+    snprintf(sprintf_buf, sizeof(sprintf_buf), "%.15s,%.15s,%.15s", wm->selected_chip_type, wm->selected_chip_manuf, wm->selected_chip_name);
     ezp_chip_data *chip_data = chips_data_repository_find_chip(wm->repo, sprintf_buf);
     if (!chip_data) g_error("chip_data not found");
 
